@@ -40,6 +40,10 @@ img {
   border-radius: 10px;
   cursor: pointer;
 }
+button:disabled {
+  cursor: not-allowed;
+}
+
 
 /* styles for task 2 */
 .div_timer {
@@ -52,10 +56,10 @@ img {
   border: 1px solid;
   border-radius: 5px;
   background-color: lightgrey;
-}
-.calendar {
   padding-top: 60px;
+  padding-bottom: 10px;
 }
+
 .timer {
   margin: 50px auto;
   display: flex;
