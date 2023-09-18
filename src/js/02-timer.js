@@ -23,7 +23,10 @@ const countdownElements = {
 const countdownMessage = document.getElementById("countdown-message");
 const startButton = document.getElementById("start-button");
 
-// Funkcja wyświetlająca komunikat o wyborze daty
+// Zmienna do przechowywania interwału
+let intervalId;
+
+//NOTIFY Funkcja wyświetlająca komunikat o wyborze daty
 function showDateSelectionMessage() {
   Notiflix.Notify.success("Wybierz datę rozpoczęcia wydarzenia");
   return;
@@ -38,22 +41,38 @@ window.onload = function () {
 datetimePicker.config.onClose.push(selectedDates => {
   const selectedDate = selectedDates[0];
   
-  // Sprawdzenie, czy wybrana data jest w przyszłości
+  // Sprawdzenie, czy wybrana data jest Z przyszłości
   if (selectedDate <= new Date()) {
-    window.alert("Proszę wybrać datę w przyszłości.");
+    window.alert("Proszę wybrać datę z przyszłości.");// Komunikat z przeglądarki
+    Notiflix.Notify.failure("Proszę wybrać datę z przyszłości.");// Komunikat z NOTIFY
     return;
   }
   
-  // Aktywacja przycisku "Start"
+  // Aktywacja przycisku "Start" po wybraniu daty
   startButton.disabled = false;
+});
+
+// Obsługa kliknięcia przycisku "Start"
+startButton.addEventListener('click', () => {
+  // Pobranie wybranej daty z flatpickr
+  const selectedDate = datetimePicker.selectedDates[0];
   
+  if (!selectedDate) {
+    // Jeśli data nie została jeszcze wybrana, nie rób nic
+    return;
+  }
+  
+  // Rozpoczęcie odliczania po kliknięciu "Start"
   startCountdown(selectedDate);
+  
+  // Dezaktywacja przycisku "Start" po jego kliknięciu
+  startButton.disabled = true;
 });
 
 function startCountdown(targetDate) {
-  let intervalId;
+  clearInterval(intervalId); // Usunięcie ewentualnego istniejącego interwału
 
-  countdownMessage.innerHTML = '<span>Odliczanie czasu...</span>';
+  countdownMessage.innerHTML = '<span style="color: darkorange">Odliczanie czasu...</span>';
 
   intervalId = setInterval(updateCountdown, 1000);
 
@@ -66,9 +85,9 @@ function startCountdown(targetDate) {
       for (const key in countdownElements) {
         countdownElements[key].textContent = "00";
       }
-      countdownMessage.innerHTML = '<span>Wydarzenie już się zakończyło</span>';
+      countdownMessage.innerHTML = '<span style="color: red">Wydarzenie już się zakończyło</span>';
       
-      // Wyświetlenie powiadomienia za pomocą Notiflix
+      //NOTIFY  Wyświetlenie powiadomienia
       Notiflix.Notify.success("Wydarzenie już się zakończyło");
       return;
     }

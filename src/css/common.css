@@ -18,6 +18,14 @@ img {
   max-width: 100%;
 }
 
+button {
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: not-allowed;
+}
+
 /* styles for task 1 */
 .container {
   margin: 0 auto;
@@ -38,12 +46,7 @@ img {
 .button {
   padding: 15px;
   border-radius: 10px;
-  cursor: pointer;
 }
-button:disabled {
-  cursor: not-allowed;
-}
-
 
 /* styles for task 2 */
 .div_timer {
@@ -77,4 +80,8 @@ button:disabled {
 }
 .label {
   text-transform: uppercase;
+}
+
+.message {
+  color: green;
 }
