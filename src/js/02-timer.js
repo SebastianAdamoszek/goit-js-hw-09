@@ -1,5 +1,7 @@
 import flatpickr from "flatpickr";
 import "flatpickr/dist/flatpickr.min.css";
+//Opjonalnie 
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
 const options = {
   enableTime: true,
@@ -39,6 +41,9 @@ function startCountdown(targetDate) {
         countdownElements[key].textContent = "00";
       }
       countdownMessage.innerHTML = '<span>Wydarzenie już się zakończyło</span>';
+      
+       // Wyświetlenie powiadomienia za pomocą Notiflix
+      Notify.success("Wydarzenie już się zakończyło");
       return;
     }
 
