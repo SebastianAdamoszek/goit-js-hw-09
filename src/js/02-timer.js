@@ -1,17 +1,15 @@
 import flatpickr from "flatpickr";
 import "flatpickr/dist/flatpickr.min.css";
-//Opjonalnie 
-import { Notify } from 'notiflix/build/notiflix-notify-aio';
+import Notiflix from 'notiflix';
+
+// Inicjalizacja Notiflix
+Notiflix.Notify.init();
 
 const options = {
   enableTime: true,
   time_24hr: true,
   defaultDate: new Date(),
   minuteIncrement: 1,
-  onClose(selectedDates) {
-    const selectedDate = selectedDates[0];
-    startCountdown(selectedDate);
-  },
 };
 
 const datetimePicker = flatpickr("#datetime-picker", options);
@@ -23,6 +21,34 @@ const countdownElements = {
   seconds: document.querySelector('[data-seconds]'),
 };
 const countdownMessage = document.getElementById("countdown-message");
+const startButton = document.getElementById("start-button");
+
+// Funkcja wyświetlająca komunikat o wyborze daty
+function showDateSelectionMessage() {
+  Notiflix.Notify.success("Wybierz datę rozpoczęcia wydarzenia");
+  return;
+}
+
+// Obsługa załadowania strony
+window.onload = function () {
+  showDateSelectionMessage();
+};
+
+// Obsługa wyboru daty
+datetimePicker.config.onClose.push(selectedDates => {
+  const selectedDate = selectedDates[0];
+  
+  // Sprawdzenie, czy wybrana data jest w przyszłości
+  if (selectedDate <= new Date()) {
+    window.alert("Proszę wybrać datę w przyszłości.");
+    return;
+  }
+  
+  // Aktywacja przycisku "Start"
+  startButton.disabled = false;
+  
+  startCountdown(selectedDate);
+});
 
 function startCountdown(targetDate) {
   let intervalId;
@@ -42,8 +68,8 @@ function startCountdown(targetDate) {
       }
       countdownMessage.innerHTML = '<span>Wydarzenie już się zakończyło</span>';
       
-       // Wyświetlenie powiadomienia za pomocą Notiflix
-      Notify.success("Wydarzenie już się zakończyło");
+      // Wyświetlenie powiadomienia za pomocą Notiflix
+      Notiflix.Notify.success("Wydarzenie już się zakończyło");
       return;
     }
 
