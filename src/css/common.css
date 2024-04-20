@@ -1,5 +1,8 @@
 * {
-  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-decoration: none;
 }
 
 body {
@@ -10,7 +13,6 @@ body {
   background-color: #fafafa;
   color: #212121;
   line-height: 1.5;
-  
 }
 
 img {
@@ -25,12 +27,42 @@ button {
 button:disabled {
   cursor: not-allowed;
 }
+h2 {
+  text-align: center;
+  color: rgb(49, 161, 21);
+}
+ul {
+  margin-top: 15px;
+}
+li {
+  background-color: rgb(127, 255, 0);
+  margin: 3px 0;
+  padding: 3px 15px;
+  transition:  200ms ease-in-out;
+}
+a {
+  color: rgb(82, 20, 139);
+}
+ li:hover{
+  padding-left: 50px;
+  background-color: rgba(127, 255, 0, 0.7);
+
+}
+.title {
+}
+.wrapper {
+  width: 300px;
+  padding: 15px;
+  margin: 20px auto;
+  border: 50px ridge rgb(0, 60, 255);
+  border-radius: 10px;
+}
 
 /* styles for task 1 */
 .container {
   margin: 0 auto;
-  width: 800px;
-  height: 600px;
+  width: 500px;
+  height: 350px;
   border: 3px solid transparent;
   border-radius: 10%;
   transition: background-color 1s ease, border-color 3s ease;
@@ -41,7 +73,6 @@ button:disabled {
   align-items: center;
   justify-content: center;
   gap: 30px;
-
 }
 .button {
   padding: 15px;
@@ -76,7 +107,6 @@ button:disabled {
 .value {
   font-size: 40px;
   font-family: monospace;
-
 }
 .label {
   text-transform: uppercase;
