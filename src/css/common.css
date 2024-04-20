@@ -13,33 +13,31 @@ body {
   background-color: #dadada;
   color: #212121;
   line-height: 1.5;
+  letter-spacing: 1;
   background: repeating-linear-gradient(
-    180deg,
-    #81cbf5 10px,
-    #4d4153 ,
-    transparent 30px,
-    transparent 30px
-  ),
-  repeating-linear-gradient(
-    90deg,
-    #003097cc ,
-    #978804cc ,
-    transparent 10px,
-    transparent 50px
-  );
-}
-
-img {
-  display: block;
-  max-width: 100%;
+      180deg,
+      #81cbf5 10px,
+      #4d4153,
+      transparent 30px,
+      transparent 30px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      #003097cc,
+      #978804cc,
+      transparent 10px,
+      transparent 50px
+    );
 }
 
 button {
   cursor: pointer;
+  background-color: green;
 }
 
 button:disabled {
   cursor: not-allowed;
+  background-color: red;
 }
 h2 {
   text-align: center;
@@ -70,7 +68,6 @@ li {
   cursor: pointer;
   color: rgb(19, 118, 131);
   text-shadow: 1 1 2 #212121;
-
 }
 
 li:hover {
@@ -81,13 +78,23 @@ li:hover {
 }
 
 .wrapper {
-  width: 300px;
+  width: 600px;
   padding: 15px;
   margin: 20px auto;
   border: 50px ridge rgb(0, 60, 255);
   border-radius: 10px;
   background-color: rgba(177, 177, 177, 0.7);
-
+}
+.link-back {
+  padding: 0px 20px;
+  background-color: #81f594;
+  color: #212121;
+  border-radius: 10px;
+  transition: 200ms ease-in-out;
+  box-shadow: 1 1 20 5 #212121;
+}
+.link-back:hover {
+  box-shadow: 1 1 20 20 #212121;
 }
 
 /* styles for task 1 */
@@ -98,13 +105,12 @@ li:hover {
   gap: 20px;
 }
 .container {
-  margin: 0 auto;
+  margin: 20px auto;
   width: 500px;
   height: 350px;
-  border: 3px solid transparent;
-  border-radius: 10%;
-  transition: background-color 1s ease,
-   border-color 2s ease;
+  border-color: transparent;
+  border-radius: 30px;
+  transition: background-color 1.5s ease, border-color 2.5s ease;
 }
 
 .buttons {
@@ -117,23 +123,20 @@ li:hover {
   padding: 15px;
   border-radius: 10px;
 }
-.link-back {
-  padding: 0px 20px;
-  background-color: #81f594;
-  color: #212121;
-  border-radius: 10px;
-  transition: 200ms ease-in-out;
-  box-shadow: 1 1 20 10 #212121;
 
-
-}
-.link-back:hover {
-  box-shadow: 1 1 20 20 #212121;
-}
 /* styles for task 2 */
-.div_timer {
-  margin: 0 auto;
-  width: 800px;
+input {
+  padding: 5px;
+}
+.timer-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.timer-div {
+  margin: 20px auto;
+  width: 600px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -143,6 +146,9 @@ li:hover {
   background-color: lightgrey;
   padding-top: 60px;
   padding-bottom: 10px;
+}
+.timer-button {
+  padding: 5px;
 }
 
 .timer {
@@ -165,4 +171,24 @@ li:hover {
 
 .message {
   color: green;
+}
+/* styles for task 3 */
+.form-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.form {
+  width: 200px;
+  margin: 20px auto;
+  padding: 20px;
+  border: 15px double rgb(17, 56, 63);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+.button-form {
+  padding: 5px 15px;
 }

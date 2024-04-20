@@ -7,12 +7,12 @@
     <link rel="stylesheet" href="css/common.css" />
   </head>
   <body>
-    <p><a href="index.html">Go back</a></p>
-
-  <div class="div_timer">
+   
+<div class="wrapper timer-wrapper">
+  <div class="timer-div">
     <div>
       <input type="text" id="datetime-picker" />
-      <button type="button" data-start id="start-button" disabled>Start</button>
+      <button class="timer-button" type="button" data-start id="start-button" disabled>Start</button>
     </div>  
     <div class="timer">
       <div class="field">
@@ -36,6 +36,10 @@
    <div id="countdown-message"><span class="message">Ustaw datę rozpoczęcia wydarzenia</span></div> 
  
   </div>
+  <a class="link-back"href="index.html">Go back</a>
+
+</div>
+ 
     <script src="js/02-timer.js" type="module"></script>
   </body>
 </html>
